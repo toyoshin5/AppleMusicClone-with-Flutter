@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
             ButtonArea(),
             Padding(
               padding: EdgeInsets.only(left: 20),
-              child: Divider(color: CupertinoColors.systemGrey4),
+              child: Divider(color: CupertinoColors.systemGrey4, height: 1),
             ),
             //リスト
             SongsArea(),
@@ -187,6 +187,7 @@ class AppButton extends StatelessWidget {
     );
   }
 }
+
 class SongsArea extends StatelessWidget {
   const SongsArea({super.key});
 
@@ -224,46 +225,43 @@ class SongsArea extends StatelessWidget {
       "Whimsical Waltz",
       "Chasing Dreams"
     ];
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemCount: songs.length,
+      separatorBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.only(left: 60),
+          child: Divider(color: CupertinoColors.systemGrey4, height: 1),
+        );
+      },
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Row(
-            children: [
-              Text(
-                "${index + 1}",
-                style: const TextStyle(
-                  color: AppColors.gray,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      songs[index],
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 20),
-              const Icon(
-                CupertinoIcons.ellipsis,
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          child: CupertinoListTile(
+            onTap: () {},
+            leading: Text(
+              "${index + 1}",
+              style: const TextStyle(
+                fontSize: 16,
                 color: AppColors.gray,
               ),
-            ],
+            ),
+            title: Text(
+              songs[index],
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: const Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Icon(
+                CupertinoIcons.ellipsis,
+                color: CupertinoColors.label,
+                size: 20,
+              ),
+            ),
           ),
         );
       },
