@@ -29,23 +29,40 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: CupertinoColors.white.withOpacity(0.85),
         middle: Text(title),
       ),
-      child: const SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 100),
-            TitleArea(),
-            ButtonArea(),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Divider(color: CupertinoColors.systemGrey4, height: 1),
+      child: const Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 100),
+                TitleArea(),
+                ButtonArea(),
+                AppDivider(),
+                SongsArea(),
+                AppDivider(),
+                Footer(),
+                SizedBox(height: 200),
+              ],
             ),
-            //リスト
-            SongsArea(),
-          ],
-        ),
+          ),
+          FloatingArea(),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class AppDivider extends StatelessWidget {
+  const AppDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: Divider(color: CupertinoColors.systemGrey4, height: 1),
     );
   }
 }
@@ -60,6 +77,7 @@ class TitleArea extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 20),
           Container(
@@ -265,6 +283,95 @@ class SongsArea extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class Footer extends StatelessWidget {
+  const Footer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Text(
+        "2023年11月3日\n30曲、300分",
+        style: TextStyle(color: AppColors.gray, fontSize: 14, height: 1.2),
+      ),
+    );
+  }
+}
+
+class FloatingArea extends StatelessWidget {
+  const FloatingArea({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 60,
+      left: 12,
+      right: 12,
+      child: CupertinoButton(
+        onPressed: () {},
+        padding: EdgeInsets.zero,
+        child: Container(
+          height: 56,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: const Color(0xfffbfbfb),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x99909090),
+                offset: Offset(0, 8),
+                spreadRadius: 0,
+                blurRadius: 20,
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      "assets/images/ordinary_songs.jpg",
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    "Good Day",
+                    style:
+                        TextStyle(fontSize: 16, color: CupertinoColors.label),
+                  ),
+                ],
+              ),
+              const Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Icon(
+                    CupertinoIcons.play_arrow_solid,
+                    color: Colors.black,
+                    size: 24,
+                  ),
+                  const SizedBox(width: 24),
+                  Icon(
+                    CupertinoIcons.forward_fill,
+                    color: Color(0xffb3b3b3),
+                    size: 26,
+                  ),
+                  const SizedBox(width: 12),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
