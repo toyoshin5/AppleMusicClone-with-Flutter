@@ -1,4 +1,5 @@
 # AppleMusicClone with Flutter
+![music_flutter](https://github.com/toyoshin5/AppleMusicClone-with-Flutter/assets/43494392/10e5fe0b-89a3-40fd-8692-2ffd9e7eeb85)
 
 ## 良かったところ
 - ReactNativeよりも環境構築が単純
