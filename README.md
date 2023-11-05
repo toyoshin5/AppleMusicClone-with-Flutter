@@ -1,16 +1,16 @@
-# apple_music_clone
+# AppleMusicClone with Flutter
 
-A new Flutter project.
+## 良かったところ
+- ReactNativeよりも環境構築が単純
+- パッケージが豊富
+- ドキュメントが読みやすい
+- エラーが分かりやすい 
+- iOSのアイコン（SFSymbol）も使える
 
-## Getting Started
+## 良くなかったところ
+- ネイティブのUIではない
+- ビルドが少し長い
+- アプリの容量が大きい
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 
